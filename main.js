@@ -22,7 +22,14 @@ navbarMenu.addEventListener('click', (event) => {
   if (section == null) {
     return;
   }
-  // section.scrollIntoView({ behavior: 'smooth' });
   const rect = section.getBoundingClientRect();
   window.scrollTo({ top: rect.top + window.scrollY - 30, behavior: 'smooth' });
+});
+
+// Handle click on "contact me" button on home
+const homeContactBtn = document.querySelector('.home__contact');
+
+homeContactBtn.addEventListener('click', () => {
+  const contact = document.getElementById('contact');
+  contact.scrollIntoView({ behavior: 'smooth' });
 });
