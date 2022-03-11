@@ -42,3 +42,19 @@ const homeContainer = document.querySelector('.home__container');
 window.addEventListener('scroll', () => {
   homeContainer.style.opacity = 1 - window.scrollY / homeHeight;
 });
+
+// Show "arrow up" button when scolling down
+const arrowupBtn = document.querySelector('.arrow-up');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > homeHeight / 2) {
+    arrowupBtn.classList.add('visible');
+  } else {
+    arrowupBtn.classList.remove('visible');
+  }
+});
+
+// Handle click on the "arrow up" button
+arrowupBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
