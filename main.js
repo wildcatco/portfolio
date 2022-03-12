@@ -16,7 +16,6 @@ const navbarHeight = navbar.getBoundingClientRect().height;
 
 // Hnadle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
-
 navbarMenu.addEventListener('click', (event) => {
   const section = document.getElementById(event.target.dataset.section);
   if (section == null) {
@@ -85,9 +84,9 @@ categoryBtnContainer.addEventListener('click', (event) => {
   }, 300);
 
   // Activate category button
-  [...categoryBtnContainer.children].forEach((categoryBtn) => {
-    console.log(categoryBtn);
-    categoryBtn.classList.remove('active');
-  });
-  event.target.classList.add('active');
+  const prevActive = document.querySelector('.category__btn.active');
+  prevActive.classList.remove('active');
+  const target =
+    event.target.nodeName === 'BUTTON' ? event.target : event.target.parentNode;
+  target.classList.add('active');
 });
