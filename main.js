@@ -90,3 +90,15 @@ categoryBtnContainer.addEventListener('click', (event) => {
     event.target.nodeName === 'BUTTON' ? event.target : event.target.parentNode;
   target.classList.add('active');
 });
+
+// Navbar toggle button
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+
+navbarToggleBtn.addEventListener('click', (event) => {
+  navbarMenu.classList.toggle('open');
+  console.log(event);
+});
+
+navbarMenu.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
+});
