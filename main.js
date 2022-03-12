@@ -58,3 +58,36 @@ window.addEventListener('scroll', () => {
 arrowupBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Filtering projects
+const categoryBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.work__projects .project');
+
+categoryBtnContainer.addEventListener('click', (event) => {
+  const filter =
+    event.target.dataset.filter || event.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
+
+  projectContainer.classList.add('anim-out');
+
+  setTimeout(() => {
+    projects.forEach((project) => {
+      if (filter === 'all' || filter === project.dataset.type) {
+        project.classList.remove('invisible');
+      } else {
+        project.classList.add('invisible');
+      }
+    });
+    projectContainer.classList.remove('anim-out');
+  }, 300);
+
+  // Activate category button
+  [...categoryBtnContainer.children].forEach((categoryBtn) => {
+    console.log(categoryBtn);
+    categoryBtn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+});
